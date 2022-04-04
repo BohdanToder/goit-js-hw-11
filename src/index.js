@@ -25,7 +25,10 @@ async function onFormSubmit(event) {
 
         fetchData.searchQuery = event.currentTarget.elements.searchQuery.value.trim().toLowerCase();
         fetchData.resetPage();
-        if (fetchData.searchQuery === '') return;
+        if (fetchData.searchQuery === '') { 
+            Notify.failure('Please enter a search query.');
+            return;
+        } 
 
         const imagesData = await fetchData.getImages();
         const { hits, totalHits } = imagesData        
